@@ -1,0 +1,205 @@
+/* 全体のスタイル */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+}
+
+body {
+    background-color: #f0f0f0;
+    color: #333;
+    line-height: 1.6;
+    padding: 20px;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #2c3e50;
+}
+
+/* ゲームコントロール */
+.game-controls {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.difficulty {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+select, button {
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+button {
+    background-color: #3498db;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #2980b9;
+}
+
+.game-stats {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.stat-box {
+    background-color: #f8f9fa;
+    padding: 8px 15px;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+#game-status {
+    font-weight: bold;
+    text-align: center;
+    min-height: 24px;
+    flex-grow: 1;
+}
+
+/* ゲームボード */
+.game-board {
+    display: grid;
+    grid-template-columns: repeat(9, 1fr);
+    gap: 2px;
+    margin: 20px 0;
+    border: 2px solid #888;
+    background-color: #888;
+    width: fit-content;
+    margin: 0 auto;
+}
+
+.cell {
+    width: 30px;
+    height: 30px;
+    background-color: #bbb;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    cursor: pointer;
+    user-select: none;
+}
+
+.cell.revealed {
+    background-color: #e0e0e0;
+}
+
+.cell.flagged {
+    background-color: #ffd700;
+}
+
+.cell.mine {
+    background-color: #ff6b6b;
+}
+
+/* 数字の色 */
+.cell[data-value="1"] {
+    color: blue;
+}
+.cell[data-value="2"] {
+    color: green;
+}
+.cell[data-value="3"] {
+    color: red;
+}
+.cell[data-value="4"] {
+    color: purple;
+}
+.cell[data-value="5"] {
+    color: maroon;
+}
+.cell[data-value="6"] {
+    color: turquoise;
+}
+.cell[data-value="7"] {
+    color: black;
+}
+.cell[data-value="8"] {
+    color: gray;
+}
+
+/* インストラクション */
+.instructions {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: #f8f9fa;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+}
+
+.instructions h3 {
+    margin-bottom: 10px;
+    color: #2c3e50;
+}
+
+.instructions ul {
+    padding-left: 20px;
+}
+
+/* レスポンシブデザイン */
+@media (max-width: 600px) {
+    .game-stats {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .difficulty {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .cell {
+        width: 25px;
+        height: 25px;
+        font-size: 12px;
+    }
+}
+
+/* ゲームオーバーとゲームクリア表示 */
+.game-over .mine {
+    background-color: #ff6b6b;
+}
+
+.game-clear .cell:not(.revealed):not(.mine) {
+    background-color: #a3e4d7;
+}
+
+.flagged::after {
+    content: "🚩";
+    font-size: 16px;
+}
+
+.mine::after {
+    content: "💣";
+    font-size: 16px;
+}
