@@ -7,26 +7,43 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>マインスイーパー</h1>
-    
-    <div class="game-controls">
-        <div class="difficulty-selector">
-            <button id="easy-btn">初級</button>
-            <button id="medium-btn">中級</button>
-            <button id="hard-btn">上級</button>
+    <div class="container">
+        <h1>マインスイーパー</h1>
+        
+        <div class="game-controls">
+            <div class="difficulty">
+                <label for="difficulty">難易度：</label>
+                <select id="difficulty">
+                    <option value="beginner" selected>初級 (9x9, 10地雷)</option>
+                    <option value="intermediate">中級 (16x16, 40地雷)</option>
+                    <option value="expert">上級 (16x30, 99地雷)</option>
+                </select>
+                <button id="new-game-btn">新しいゲーム</button>
+            </div>
+            
+            <div class="game-stats">
+                <div class="stat-box">
+                    <span>残り地雷数:</span>
+                    <span id="mines-count">10</span>
+                </div>
+                <div class="stat-box">
+                    <span>経過時間:</span>
+                    <span id="timer">0</span>
+                </div>
+                <div id="game-status"></div>
+            </div>
         </div>
-        <div class="game-info">
-            <div class="mines-counter">残り地雷: <span id="mines-count">10</span></div>
-            <div class="timer">経過時間: <span id="timer">0</span>秒</div>
+        
+        <div class="game-board" id="game-board"></div>
+        
+        <div class="instructions">
+            <h3>遊び方</h3>
+            <ul>
+                <li>左クリック：セルを開く</li>
+                <li>右クリック：フラグを立てる/解除</li>
+                <li>すべての安全なセルを開くとクリア！</li>
+            </ul>
         </div>
-        <button id="new-game-btn">新しいゲーム</button>
-    </div>
-    
-    <div id="game-board" class="game-board"></div>
-    
-    <div id="game-result" class="game-result hidden">
-        <div id="result-message"></div>
-        <button id="play-again-btn">もう一度プレイ</button>
     </div>
     
     <script src="script.js"></script>
